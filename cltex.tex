@@ -1,0 +1,141 @@
+\documentclass[12pt]{article}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]
+{geometry}
+\usepackage{amsmath}
+\date{}
+\usepackage{hyperref} 
+\begin{document}
+    \tableofcontents  
+    2.2 Формула Стирлинга \hbox to 12 cm {\dotfill 2}
+    \newpage
+\begin{flushleft}
+\Large \bf{2.2 Формула Стирлинга }
+\end{flushleft}
+Неравенства теоремы 2.3 значительно точнее неравенств первых двух теорем. Тем не менее верхняя и нижняя оценки теоремы 2.3 все еще значительно отличаются. Нетрудно видеть, что это происходит из-за того, что использованные в доказательстве теоремы неравенства леммы 2.1, достаточно точные при больших $k$, становятся грубыми при малых значениях $k$.
+Если использовать неравенства леммы 2.1 только при больших значениях $k$, то можно надеяться на увеличение точности неравенств для $n!$. Именно так сделано в доказательстве следующей теоремы.\\
+\begin{flushleft}
+\large \bf{Теорема 2.4}
+\end{flushleft}
+\begin{equation}
+\sqrt{2\pi n}\cdot \left(\frac{n}{e}\right)^n e^{-1/4}\le n!\le \sqrt{2\pi n}\cdot \left(\frac{n}{e}\right)^n e^{1/4n} \notag
+\end{equation}
+  Доказательство теоремы 2.4 основано на неравенствах леммы 2.1 и оценках биномиального коэффициента $\begin{pmatrix} 2n\\n \end{pmatrix}$ , которые будут установлены ниже в лемме 2.3. Для доказательства этой леммы потребуется следующее вспомогательное утверждение.
+\begin{flushleft}
+\large \bf{Лемма 2.2}
+\end{flushleft}
+\begin{equation}
+  \int_0^{\pi/2}{sin^{2n}d x}= \frac{(2n-1)(2n-3) \cdot \ldots \cdot 3 \cdot 1}{2n(2n-2) \cdot \ldots  \cdot 4 \cdot 2} \cdot \frac{\pi}{2},  \notag
+\end{equation}
+\begin{equation}
+    \int_0^{\pi/2}{sin^{2n+1}d x}= \frac{2n(2n-2) \cdot \ldots \cdot 4 \cdot 2}{(2n+1)(2n-1) \cdot \ldots \cdot 3 \cdot 1}.\notag
+\end{equation}\\
+\textsc{ДОКАЗАТЕЛЬСТВО}\text{ }Обозначим интеграл $\int_0^{\pi/2}{sin^n x d x}$ через $I_n$.Тогда 
+\begin{align*}
+        I_n&=\int_0^{\pi/2}{sin^{2n+1}d cos x}=\\
+        &= sin^{n-1}x cos{x}\bigl|_0^{\pi/2}+\int_0^{\pi/2}{cos{x}d x}sin^{n-1}x=\\ &= (n-1)\int_0^{\pi/2}{cos^2{x}sin^{n-2}{x}d x}=\\ &= (n-1)\int_0^{\pi/2}{(1-sin^2)sin^{n-2}{x}d x}=(n-1)(I_{n-2}-I_n)\\ 
+\end{align*} Следовательно, имеет место рекуррентная формула
+\begin{equation}
+    I_n=\frac{n-1}{n}I_{n-2} \notag
+\end{equation}\\
+последовательное применение которой к интегралам $I_n$ и $I_{2n+1}$ ~дает следующие равенства:
+\begin{align}
+    I_{2n}= \frac{(2n-1)(2n-3) \cdot \ldots \cdot 3 \cdot 1}{2n(2n-2) \cdot \ldots \cdot 4 \cdot 2} \cdot I_0 \\
+    I_{2n+1}= \frac{2n(2n-2) \cdot \ldots \cdot 4 \cdot 2}{(2n+1)(2n-1) \cdot \ldots \cdot 3\cdot 1} \cdot I_1 \notag
+\end{align}
+Так как $I_0=\pi/2$ и $I_1=1$, то подставив эти значения в (2.3) получим требуемые равенства. Лемма доказана.\\
+Напомним, что через $n!!$ обозначается произведения всех натуральных чисел, не превосходящих $n$ и имеющих такую же четность как и $n$, ~т~.~е.
+\begin{equation}
+2n!! = 2n(2n-2)\cdot \ldots \cdot2,\text{  } (2n + 1)!! = (2n + 1)(2n~- 1)\cdot \ldots \cdot 1. \notag
+\end{equation}
+Используя эти обозначения, равенства леммы 2.2 можно записать так:
+\begin{equation}
+    \int_0^{\pi/2}{sin^{2n}d x}=\frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2},\text{  } \int_0^{\pi/2}{sin^{2n+1}d x}=\frac{2n!!}{(2n+1)!!}. \notag
+\end{equation}
+\begin{flushleft}
+\large \bf{Лемма 2.3}
+\end{flushleft}
+\begin{equation}
+    \frac{2^{2n}}{\sqrt{\pi n}}e^{-1/4n}\le \begin{pmatrix} 2n\\n \end{pmatrix} \le  \frac{2^{2n}}{\sqrt{\pi n}}  \notag
+\end{equation}
+ДОКАЗАТЕЛЬСТВО.Так как $sin{x}$ между $0$ и $\pi/2$ изменяется от $0$ до $1$, то $sin^{2n+1}{x} \le sin^{2n}{x} \le sin^{2n-1}{x}$ при $x \in [0, \pi/2]$.~Следовательно,
+\begin{equation}
+    \int_0^{\pi/2}{sin^{2n+1}{x}d x}\le \int_0^{\pi/2}{sin^{2n}{x}d x}\le \int_0^{\pi/2}{sin^{2n-1}{x}d x}.  \notag
+\end{equation}
+Применяя лемму 2.2, получим следующие неравенства
+\begin{equation}
+  \frac{2n!!}{(2n+1)!!}  \le \frac{(2n-1)!!}{2n!!}\cdot \frac{\pi}{2}\le \frac{(2n-2)!!}{(2n-1)!!},  \notag
+\end{equation}\\
+которые, как легко видеть, преобразуются к виду
+\begin{equation}
+    \frac{2n!!\cdot2n!!}{(2n+1)!!\cdot(2n-1)!!}\le \frac{\pi}{2} \le  \frac{2n!!\cdot(2n-2)!!}{(2n-1)!!\cdot(2n-1)!!}.\\  \notag
+\end{equation}
+Извлекая квадратные корни из новых неравенств, получим, что
+\begin{equation}
+    \frac{1}{\sqrt{2n+1}}\cdot \frac{2n!!}{(2n-1)!!}\le \sqrt{\frac{\pi}{2}}\le \frac{1}{\sqrt{2n}}\cdot \frac{2n!!}{(2n-1)!!}.  \notag
+\end{equation}
+Далее разделим все члены получившихся неравенств на $2n!!$ и $\sqrt{\pi/2}$ и умножим на $(2n-1)!!$ ~и $2^{2n}$. Тогда
+\begin{equation}
+     \frac{1}{\sqrt{1+1/2n}}\cdot \frac{2^{2n}}{\sqrt{\pi n}}\le 2^{2n}\cdot \frac{(2n-1)!!}{2n!!}\le \frac{2^{2n}}{\sqrt{\pi n}}
+\end{equation}
+Наконец, заметим, что
+\begin{equation}
+    \frac{(2n-1)!!}{2n!!}=\frac{(2n-1)!!\cdot 2n!!}{2n!!\cdot 2n!!}=\frac{(2n)!}{2^{2n}\cdot n!\cdot n!}=\begin{pmatrix} 2n\\n \end{pmatrix}\cdot 2^{-2n}.  \notag
+\end{equation}
+Теперь, учитывая, что $e^{-x}\le 1/(1+x)\text{ при } 0\le x\le 1$, подставим последнееравенство в (2.4) и получим требуемые оценки для $\begin{pmatrix} 2n\\n \end{pmatrix}$. Лемма доказана.\\
+ДОКАЗАТЕЛЬСТВО Теоремы 2.4. Так как
+\begin{equation}
+    \begin{pmatrix} 2n\\n \end{pmatrix}=\frac{2n!}{n!\cdot2n!}=\frac{2n(2n-1)\cdot \ldots \cdot(n+1)}{n!}.  \notag
+\end{equation}
+то легко видеть, что
+\begin{equation}
+    n!=2n(2n-1)\cdot \ldots \cdot(n+1)\bigg/\begin{pmatrix} 2n\\n \end{pmatrix}.
+\end{equation}
+Оценим логарифм произведения $2n(2n- 1)\cdot \ldots \cdot (n+1)$. Для этого воспользуемся неравенствами
+\begin{align}
+    \ln{k}\ge\int_{k-1}^k{\ln{x d x}+\ln{(2k)}-\ln{(2k-1)}} \label{fm}\\
+    \ln{k}\le\int_{k-1}^k{\ln{x d x}+\frac{1}{2} \left(\ln{k}-\ln{(k-1)}\right)},\label{fm2}
+\end{align}
+которые были доказаны в лемме 2.1. Суммируя неравенства (\ref{fm2}) по всем $k$ от $n+1$ до $2n$, видим, что
+\begin{align}
+      \sum_{k=n+1}^{2n}\ln{k} &\le\int_n^{2n}{\ln{x}d x}+\frac{1}{2} \left(\ln{(2n)}-\ln{n} \right)=\notag \\  &=\int_n^{2n}{\ln{x}d x}+\frac{1}{2}\ln{2}=n\ln{n}+2n\ln{2}-n+\frac{1}{2}\ln{2}  \notag
+\end{align}
+Для того, чтобы оценить аналогичную сумму неравенств (\ref{fm}), как и ранее при доказательстве теоремы 2.3 положим
+\begin{equation}
+    a_1=\sum_{k=n+1}^{2n}(\ln(2k)-\ln(2k-1)),\text{ }a_2=\sum_{k=n+1}^{2n}(\ln(2k+1)-\ln(2k)).  \notag
+\end{equation}
+Легко видеть, что $a_1 + a_2=\ln(4n + 1)-\ln(2n + 1)$. А так как $a_1>a_2$, то
+\begin{align}
+    a_1 &>\frac{1}{2}\ln(4n+1)-\frac{1}{2}\ln(2n+1)=\frac{1}{2}\ln\left(2\cdot \frac{2n+1/2}{2n+1}\right)=\notag \\
+    &= \frac{1}{2}\ln{2}+\frac{1}{2}\ln\left(1-\frac{1}{4n+2}\right)\ge \frac{1}{2}\ln{2}-\frac{1}{4n}.  \notag
+\end{align}
+Таким образом,
+\begin{equation}
+    \sum_{k=n+1}^{2n}\ln{k}>n\ln{n}+2n\ln{n}-n+\frac{1}{2}\ln{2}-\frac{1}{4n}.  \notag
+\end{equation}
+Следовательно,
+\begin{equation}
+    \sqrt{2}\left(\frac{n}{e}\right)^n2^{2n}e^{-1/4n}\le2n(2n-1)\cdot \ldots \cdot(n+1) \le\sqrt{2} \left(\frac{n}{e}\right)^n2^{2n}  \notag
+\end{equation}
+Из леммы 2.3 следует, что
+\begin{equation}
+    \frac{\pi n}{2^{2n}}\le1/\begin{pmatrix} 2n\\n \end{pmatrix}\le \frac{\pi n}{2^{2n}}e^{1/4n}.  \notag
+\end{equation}
+Теперь умножим почленно последние неравенства и получим
+\begin{equation}
+    \sqrt{2\pi n}\cdot \left(\frac{n}{e}\right)^n e^{-1/4n}\le n!\le \sqrt{2\pi n}\cdot \left(\frac{n}{e}\right)^n e^{1/4n}.  \notag
+\end{equation}
+Теорема доказана.\\
+Отношение верхнего и нижнего неравенств теоремы 2.4 не превосходит $e^{1/2n}$ и при $n \rightarrow \infty$ стремится к единице. Поэтомуиз теоремы 2.4 легко следует известная формула Стирлинга
+\begin{equation}
+    n!=\sqrt{2\pi n}\cdot \left(\frac{n}{e}\right)^n(1+o(1)).  \notag
+\end{equation}
+Неравенства для $n!$, установленные в теореме 2.4, можно усилить показав (например, см. [32]), что
+\begin{equation}
+     \sqrt{2\pi n}\cdot \left(\frac{n}{e}\right)^n e^{1/(12n+1)}\le n!\le \sqrt{2\pi n}\cdot \left(\frac{n}{e}\right)^n e^{1/12n}.  \notag
+\end{equation}
+Более точные оценки $n!$ можно найти в [8].
+
+\end{document}
